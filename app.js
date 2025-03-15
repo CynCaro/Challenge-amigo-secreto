@@ -23,3 +23,27 @@ function agregarAmigo() {
     input.value = "";
 }
 
+function actualizarLista() {
+    const lista = document.getElementById("listaAmigos");
+    
+    // Usamos .map() para generar una lista de <li> y luego la unimos con .join("")
+    lista.innerHTML = amigos.map(amigo => `<li>${amigo}</li>`).join("");
+}
+
+// Función para sortear un amigo al azar
+function sortearAmigo() {
+    // Validar que el array no esté vacío
+    if (amigos.length === 0) {
+        alert("No hay amigos en la lista para sortear.");
+        return;
+    }
+
+    // Generar un índice aleatorio
+    const indiceAleatorio = Math.floor(Math.random() * amigos.length);
+
+    // Obtener el nombre del amigo sorteado
+    const amigoSorteado = amigos[indiceAleatorio];
+
+    // Mostrar el resultado en la página
+    document.getElementById("resultado").innerHTML = `<li>${amigoSorteado}</li>`;
+}
